@@ -1,0 +1,18 @@
+User Registration app
+1. Building an app using Spring MVC and Spring ORM
+
+
+How to create a Spring MVC and Spring ORM project (3 steps):
+1. Create the Maven project and update the pom with the needed dependencies 
+2. Configure the Front Controller (DispatcherServlet) by creating a web.xml
+3. Configure spring config file which we will configure ORM configurations.
+   ORM configuratoins consists of configuring the HibernateTemplate. 
+   To configure the HibernateTemplate, we must configure:
+	a. the SessionFactory
+	b. DataSource
+	c. ViewResolver 
+4. Configure the MVC design pattern, which consists of:
+	a. Model 
+	b. Data Access Layer
+	c. Service Layer
+	d. Controller Layer

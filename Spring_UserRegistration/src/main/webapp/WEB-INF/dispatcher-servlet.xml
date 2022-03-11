@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	                    http://www.springframework.org/schema/beans/spring-beans.xsd 
+	                    http://www.springframework.org/schema/context 
+	                    http://www.springframework.org/schema/context/spring-context.xsd
+	                    http://www.springframework.org/schema/tx 
+	                    http://www.springframework.org/schema/tx/spring-tx.xsd"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans">
+
+	<!-- Enable annotations -->
+	<context:component-scan base-package="com.userRegistration"/>
+	
+	<!-- Enable  Transaction Management -->
+	<tx:annotation-driven/>
+
+	<!-- Configure the HibernateTemplate -->
+	<bean name="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		p:driverClassName="com.mysql.cj.jdbc.Driver"
+		p:url="jdbc:mysql://localhost/mydb" p:username="root"
+		p:password="GoReadMe2021!" />
+
+	<bean name="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"
+		p:dataSource-ref="dataSource">
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+		<property name="annotatedClasses">
+			<list>
+				<value>com.userRegistration.entity.User</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean name="hibernateTemplate"
+		class="org.springframework.orm.hibernate5.HibernateTemplate"
+		p:sessionFactory-ref="sessionFactory" />
+
+	<!-- Configure Hibernate Transaction Management -->
+	<bean name="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager"
+		p:sessionFactory-ref="sessionFactory" />
+
+	<!-- Configure the View Resolver -->
+	<bean name="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/jsps/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+
+</beans>

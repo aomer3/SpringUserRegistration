@@ -1,0 +1,34 @@
+Asynchronous Java and XML (AJAX)
+1. Two ways a client communicates with an application running on a server 
+	a. Synchronous - the client sends a request to the server and waits for a request
+           to come back. The client cannot perform any other actions until the response
+           is received from the server. Once the response is received, only then can the 
+           client send another request. The requests and responses are in sync. 
+		1. Disadvantage - the user cannot do anything on the browser until the
+                   response is received 
+	b. Asynchronous - the client can send multiple requests to the server and does 
+           not have to wait for any response before sending more requests. The responses 
+           will come back from the server at some point. The requests and respones are 
+           not in sync.
+		1. Advantage - the user can interact with the UI, instead of just waiting
+
+2. AJAX increases the responsiveness of the web application, b/c when the components of 
+   browser are updated asynchronously, the user doesn't have to wait for the entire page 
+   to come back as a single response but each component will come back as a separate
+   response
+ 
+3. Using AJAX calls will allow us to update partial UIs in the application
+	ex: Gmail sign up page - if you type in an email that's already taken, you will 
+            will immediately get back an error message asking you to enter a new email. 
+            The rest of the page is not affected but that specific email textbox sends an
+            AJAX call to check if the email is taken 
+
+4. AJAX calls can be made using JQuery 
+
+
+----------------------------------------------
+
+How to implement AJAx (2 steps)
+1. Implement the backend validation 
+	a. example: check if id already exists in the database
+2. Make AJAX call in the JSP page

@@ -1,0 +1,16 @@
+JQuery
+1. JQuery is a Javascript framework that makes working with Javascript much easier 
+2. Everything in JQuery starts with a $ symbol 
+3. Example of how JQuery simplifies Javascript code, here is what you need to do to 
+   access
+   a field called id in HTML:
+	a. document.getElementById("userId") - Javascript
+	b. ${"userId"} - JQuery
+4. To make an AJAX call with JQuery:
+	a. $.ajax({
+                    url: "" <- the server url the ajax call will hit given a user 
+                    request
+		    data:{key:value}  <- data to send back to user as response (JSON)
+                    success:function(){} <- will be executed when the response gets 
+                    to browser
+

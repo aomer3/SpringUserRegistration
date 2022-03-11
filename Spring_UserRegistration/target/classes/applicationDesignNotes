@@ -1,0 +1,40 @@
+Designing the app
+
+
+Model
+1. Create a database table
+2. Create a model class that describes the database table
+	a. mark the class with JPA annotations to make it an entity
+	b. @Entity and @Id are required, @Table and @Columns not needed if class table name
+	   and class field names match the database table name and column names 
+
+
+Data Access Layer
+3. Create a UserDao interface
+4. Create a UserDaoImpl that implements the UserDao interface
+	a. the UserDamoImpl uses HibernateTemplate to perform CRUD functions, add the 
+	   the HibernateTemplate dependency and create for it getters and setters
+	b. mark with @Repository 
+5. Create the UserDao methods
+
+
+Services Layer
+6. Create a UserService interface
+7. Create a UserServiceImpl that implements the UserService interface
+	a. the UserServiceImpl uses UserDao to do its work, add the UserDao dependency
+	   and create for it getters and setters
+	b. mark with @Service 
+8. Create the UserService methods	
+	a. @Transactional can be marked in either the @UserDaoImpl class method or the 
+	   @UserServiceImpl class methods
+	b. it is better practice to mark the @Transactional annotation in the 
+	   @UserServiceImpl class methods as there could be multiple statements in each
+	   of the methods
+
+
+Controller Layer
+9. Create a UserController class
+	a. UserController class uses UserService to do its work, add the UserService 
+	   dependency and create for it getters and setters
+	b. mark with @Controller
+10. Create the UserController methods
